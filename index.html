@@ -24,7 +24,7 @@
                   <h4 class="text-center">PMack Crystal Challenge</h4>
                   <p class="text-center">Click one of the four crystals. They each are worth a secret amount. Match the magic number to win!</p>
                   <div class="col-12 text-center"> 
-                        <button id="random-button" name="singlebutton" class="btn btn-primary">Start the Game!</button> 
+                        <button id="random-button" name="singlebutton" class="btn btn-primary">Restart the Game</button> 
 
                     </div>
 
@@ -96,26 +96,6 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
 
-    
-    
-
-    $(document).ready(function() {
-    function checkScores() {
-      if (counter === magicNumber) {
-      alert("You win!");
-      wins++;
-      $("#wins-score").text(wins);
-      }
-
-      if (counter >= magicNumber) {
-      alert("You lose!!");
-      $("#losses-score").text(loss);
-      }
-    }
-
-});
-
-  
 
 $(document).ready(function() {
     console.log( "ready!" );
@@ -124,9 +104,10 @@ $(document).ready(function() {
     var wins = 0;
     var losses = 0;
     var magicNumber = [];
- 
+
+
   //create random Magic number for the game
-  var magicNumber=Math.floor(Math.random()*150+1);
+  var magicNumber=Math.floor(Math.random()*150+19);
   console.log(magicNumber);
 
   //print the magic number to the page
@@ -135,12 +116,25 @@ $(document).ready(function() {
     //create numbers for ach of the crystals
     var num1= Math.floor(Math.random()*21+1)
     console.log(num1);
-    var num2= Math.floor(Math.random()*11+1)
+    var num2= Math.floor(Math.random()*19+1)
     console.log(num2);
-    var num3= Math.floor(Math.random()*21+1)
+    var num3= Math.floor(Math.random()*81+1)
     console.log(num3);
-    var num4= Math.floor(Math.random()*11+1)
+    var num4= Math.floor(Math.random()*16+1)
     console.log(num4);
+
+    function reset(){
+      magicNumber=Math.floor(Math.random()*150+19);
+      console.log(magicNumber);
+      $('#magic-Number').text(magicNumber);
+      num1= Math.floor(Math.random()*21+1);
+      num2= Math.floor(Math.random()*19+1);
+      num3= Math.floor(Math.random()*81+1);
+      num4= Math.floor(Math.random()*16+1);
+      userTotal= 0;
+      counter = 0;
+      $('#yourNumber').text(counter);
+      } 
  
   
     $("#redCrystal").on("click", function() {
@@ -157,6 +151,7 @@ $(document).ready(function() {
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
     
+    
    });
 
     $("#blueCrystal").on("click", function() {
@@ -165,17 +160,33 @@ $(document).ready(function() {
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
     
+    
   });
   $("#blackCrystal").on("click", function() {
     counter = counter + num4;
     $('#yourNumber').text(counter);
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
-    
+  
   });
-  //check to see if counter === magicNumber
 
+  $("#random-button").on("click", function() {
+      reset();
 
+    });
+    
+
+    if (counter === magicNumber) {
+    alert("You win!");
+    wins++;
+    $("#wins-score").text(wins);
+    }
+
+    if (counter >= magicNumber) {
+    alert("You lose!!");
+    $("#losses-score").text(loss);
+    }
+    
 
 //this is a closing funciton from the opening ready() function
 });
