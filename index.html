@@ -64,7 +64,6 @@
       <div class="container-fluid">
             <div class="row justify-content-center">
 
-   
                         <div class="card" style="width: 18rem;">
                                 <img class="card-img-top" id="redCrystal" src="assets/images/red.png" alt="Card image cap">
                                 <div class="card-body">
@@ -144,7 +143,7 @@
     $("#wins-score").text(wins);
     }
 
-    else if (counter >= magicNumber) {
+    else if (counter > magicNumber) {
     var sound = document.getElementById("audio_three");
     sound.play();
     alert("You lose!!");
@@ -157,8 +156,8 @@
     }
 
     $("#redCrystal").on("click", function() {
-      check();
     counter = counter + num1;
+    check();
     $('#yourNumber').text(counter);
     var sound = document.getElementById("audio");
     sound.play();
@@ -166,8 +165,8 @@
     });
 
     $("#greenCrystal").on("click", function() {
-      check();
     counter = counter + num2;
+    check();
     $('#yourNumber').text(counter);
     var sound = document.getElementById("audio");
     sound.play();
@@ -175,8 +174,8 @@
    });
 
     $("#blueCrystal").on("click", function() {
-      check();
     counter = counter + num3;
+    check();
     $('#yourNumber').text(counter);
     var sound = document.getElementById("audio");
     sound.play();
@@ -184,8 +183,8 @@
     
   });
   $("#blackCrystal").on("click", function() {
-    check();
     counter = counter + num4;
+    check();
     $('#yourNumber').text(counter);
     var sound = document.getElementById("audio");
     sound.play();
