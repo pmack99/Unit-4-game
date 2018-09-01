@@ -99,8 +99,6 @@
   <script type="text/javascript">
 
 
-$(document).ready(function() {
-    console.log( "ready!" );
 
     var counter = 0;
     var wins = 0;
@@ -133,26 +131,27 @@ $(document).ready(function() {
       num2= Math.floor(Math.random()*12+1);
       num3= Math.floor(Math.random()*12+1);
       num4= Math.floor(Math.random()*12+1);
-      userTotal= 0;
       counter = 0;
       $('#yourNumber').text(counter);
       } 
  
     function check(){
     if (counter === magicNumber) {
-    alert("You win!");
-    wins++;
     var sound = document.getElementById("audio_two");
     sound.play();
+    alert("You win!");
+    wins++;
     $("#wins-score").text(wins);
     }
 
     else if (counter >= magicNumber) {
-    alert("You lose!!");
-    losses++;
     var sound = document.getElementById("audio_three");
     sound.play();
+    alert("You lose!!");
+    losses++;
     $("#losses-score").text(losses);
+    counter = 0;
+    $('#yourNumber').text(counter);
     reset();
     }
     }
@@ -201,7 +200,7 @@ $(document).ready(function() {
     
 
 //this is a closing funciton from the opening ready() function
-});
+
 
 
   </script>
