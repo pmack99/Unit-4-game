@@ -44,7 +44,9 @@
                                       </div>
 
                                 <div class="col-3">
-                                        <p class="text-center">Magic Number:<br> <hr> <span id="magic-Number" ></span> </p>
+                                        <p class="text-center">Magic Number:<br> <hr> <span id="magic-Number" > 0 </span> </p>
+                                        <hr>
+                                        <p class="text-center">Your Number:<br> <hr> <span id="yourNumber" > 0 </span> </p>
                                           </div>
            
                                 <div class="card" style="width: 18rem;">
@@ -71,8 +73,6 @@
                               </div>
 
                         <div class="col-3">
-                                <p class="text-center">Your Number:<br> <hr> <span id="yourNumber" > 0 </span> </p>
-                            <hr>
                                   <p>Wins: <span id="wins-score"> 0 </span><p>
                             <hr>
                                   <p>Losses: <span id="losses-score"> 0 </span><p>
@@ -96,11 +96,29 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
 
+    
+    
 
-$( document ).ready(function() {
+    $(document).ready(function() {
+    function checkScores() {
+      if (counter === magicNumber) {
+      alert("You win!");
+      wins++;
+      $("#wins-score").text(wins);
+      }
+
+      if (counter >= magicNumber) {
+      alert("You lose!!");
+      $("#losses-score").text(loss);
+      }
+    }
+
+});
+
+  
+
+$(document).ready(function() {
     console.log( "ready!" );
-
-
 
     var counter = 0;
     var wins = 0;
@@ -108,101 +126,59 @@ $( document ).ready(function() {
     var magicNumber = [];
  
   //create random Magic number for the game
-  var magicNumber=Math.floor(Math.random()*100+1);
+  var magicNumber=Math.floor(Math.random()*150+1);
   console.log(magicNumber);
 
+  //print the magic number to the page
   $('#magic-Number').text(magicNumber);
 
     //create numbers for ach of the crystals
-    var num1= Math.floor(Math.random()*11+1)
+    var num1= Math.floor(Math.random()*21+1)
     console.log(num1);
     var num2= Math.floor(Math.random()*11+1)
     console.log(num2);
-    var num3= Math.floor(Math.random()*11+1)
+    var num3= Math.floor(Math.random()*21+1)
     console.log(num3);
     var num4= Math.floor(Math.random()*11+1)
     console.log(num4);
  
   
-
-  
     $("#redCrystal").on("click", function() {
     counter = counter + num1;
+    $('#yourNumber').text(counter);
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
-    $('#yourNumber').text(counter);
+    
     });
 
     $("#greenCrystal").on("click", function() {
     counter = counter + num2;
+    $('#yourNumber').text(counter);
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
-    $('#yourNumber').text(counter);
+    
    });
 
     $("#blueCrystal").on("click", function() {
     counter = counter + num3;
+    $('#yourNumber').text(counter);
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
-    $('#yourNumber').text(counter);
+    
   });
   $("#blackCrystal").on("click", function() {
     counter = counter + num4;
+    $('#yourNumber').text(counter);
     console.log("New number= " + counter);
     alert("You have " + counter + " points");
-    $('#yourNumber').text(counter);
+    
   });
+  //check to see if counter === magicNumber
 
+
+
+//this is a closing funciton from the opening ready() function
 });
-
-
-
-
- 
-  
-
-    // We'll then increment the counter each time by the randomly selected number.
-    //counter += increment;
-
-      // Here we created some logic to "check" if the click counter matches the targetNumber.
-    // Remember, this click event will be triggered with each click.
-    // With each click the counter will increase by 10 and be re-evaluated against target.
-    //if (counter === magicNumber) {
-
-    // If the numbers match we'll celebrate the user's win.
-    //alert("You win!");
-    //wins++;
-    //$("#wins-score").text(wins);
-   // }
-
-    // Here we added an "else if" condition. If the user's counter ever exceeds the targetNumber...
-   //if (counter >= magicNumber) {
-
-    // Then they are alerted with a loss.
-   // alert("You lose!!");
-   // $("#losses-score").text(loss);
-
-    //}
-
-
-
-
-  // Here we created an on-click event that responds to button clicks of the crystal images.
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
 
 
   </script>
