@@ -85,7 +85,9 @@
                                 </div>
                         </div>
     </div>
-
+    <audio id="audio" src="assets/audio/coin.wav" autostart="false" ></audio>
+    <audio id="audio_two" src="assets/audio/ding.flac" autostart="false" ></audio>
+    <audio id="audio_three" src="assets/audio/lose.wav" autostart="false" ></audio>
 
     </div>
 
@@ -107,66 +109,81 @@ $(document).ready(function() {
 
 
   //create random Magic number for the game
-  var magicNumber=Math.floor(Math.random()*150+19);
+  var magicNumber=Math.floor(Math.random()*120+1);
   console.log(magicNumber);
 
   //print the magic number to the page
   $('#magic-Number').text(magicNumber);
 
     //create numbers for ach of the crystals
-    var num1= Math.floor(Math.random()*21+1)
+    var num1= Math.floor(Math.random()*12+1)
     console.log(num1);
-    var num2= Math.floor(Math.random()*19+1)
+    var num2= Math.floor(Math.random()*12+1)
     console.log(num2);
-    var num3= Math.floor(Math.random()*81+1)
+    var num3= Math.floor(Math.random()*12+1)
     console.log(num3);
-    var num4= Math.floor(Math.random()*16+1)
+    var num4= Math.floor(Math.random()*12+1)
     console.log(num4);
 
     function reset(){
-      magicNumber=Math.floor(Math.random()*150+19);
+      magicNumber=Math.floor(Math.random()*120+1);
       console.log(magicNumber);
       $('#magic-Number').text(magicNumber);
-      num1= Math.floor(Math.random()*21+1);
-      num2= Math.floor(Math.random()*19+1);
-      num3= Math.floor(Math.random()*81+1);
-      num4= Math.floor(Math.random()*16+1);
+      num1= Math.floor(Math.random()*12+1);
+      num2= Math.floor(Math.random()*12+1);
+      num3= Math.floor(Math.random()*12+1);
+      num4= Math.floor(Math.random()*12+1);
       userTotal= 0;
       counter = 0;
       $('#yourNumber').text(counter);
       } 
  
-  
+    
+    if (counter === magicNumber) {
+    alert("You win!");
+    wins++;
+    var sound = document.getElementById("audio_two");
+    sound.play();
+    $("#wins-score").text(wins);
+    }
+
+    else if (counter >= magicNumber) {
+    alert("You lose!!");
+    var sound = document.getElementById("audio_three");
+    sound.play();
+    $("#losses-score").text(loss);
+    }
+
+
     $("#redCrystal").on("click", function() {
     counter = counter + num1;
     $('#yourNumber').text(counter);
-    console.log("New number= " + counter);
-    alert("You have " + counter + " points");
+    var sound = document.getElementById("audio");
+    sound.play();
     
     });
 
     $("#greenCrystal").on("click", function() {
     counter = counter + num2;
     $('#yourNumber').text(counter);
-    console.log("New number= " + counter);
-    alert("You have " + counter + " points");
-    
-    
+    var sound = document.getElementById("audio");
+    sound.play();
+
    });
 
     $("#blueCrystal").on("click", function() {
     counter = counter + num3;
     $('#yourNumber').text(counter);
-    console.log("New number= " + counter);
-    alert("You have " + counter + " points");
+    var sound = document.getElementById("audio");
+    sound.play();
     
     
   });
   $("#blackCrystal").on("click", function() {
     counter = counter + num4;
     $('#yourNumber').text(counter);
-    console.log("New number= " + counter);
-    alert("You have " + counter + " points");
+    var sound = document.getElementById("audio");
+    sound.play();
   
   });
 
@@ -174,18 +191,7 @@ $(document).ready(function() {
       reset();
 
     });
-    
 
-    if (counter === magicNumber) {
-    alert("You win!");
-    wins++;
-    $("#wins-score").text(wins);
-    }
-
-    if (counter >= magicNumber) {
-    alert("You lose!!");
-    $("#losses-score").text(loss);
-    }
     
 
 //this is a closing funciton from the opening ready() function
