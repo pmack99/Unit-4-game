@@ -1,10 +1,14 @@
 html { 
-
     height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 } 
+
+.topbox{
+    margin-bottom: 10px; 
+    padding: 20px;
+}
 
 .card-header{
     background-color: lightgrey;
@@ -43,12 +47,10 @@ container{
     margin: 20px;
     margin-top: 10px;
     border: 1px solid grey;
+    border-radius: 25px;
 
 }
-.topbox{
-    margin-bottom: 10px; 
-    padding: 20px;
-}
+
 
 .card{
     border: none;
